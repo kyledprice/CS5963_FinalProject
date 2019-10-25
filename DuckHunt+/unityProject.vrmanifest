@@ -1,0 +1,16 @@
+{
+  "source": "Unity",
+  "applications": [
+    {
+      "app_key": "application.generated.unity.duckhunt.exe",
+      "launch_type": "url",
+      "url": "steam://launch/",
+      "action_manifest_path": "C:\\Users\\u1018878\\Desktop\\cs5963\\CS5963_FinalProject\\DuckHunt+\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+      "strings": {
+        "en_us": {
+          "name": "DuckHunt+ [Testing]"
+        }
+      }
+    }
+  ]
+}
