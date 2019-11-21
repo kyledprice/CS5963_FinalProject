@@ -22,7 +22,7 @@ public class SpawnAnimals : MonoBehaviour
         spawnLocations.Add(new Vector3(-128, 12.22304F, 81));
         spawnLocations.Add(new Vector3(-128, 12.22304F, -39));
         spawnLocations.Add(new Vector3(10, 12.22304F, -107));
-        //spawnLocations.Add(new Vector3(97, 12.22304F, -61.5F));
+        //spawnLocations.Add(new Vector3(2, 12.22304F, 92));
         spawnLocations.Add(new Vector3(41, 12.22304F, -98));
         spawnLocations.Add(new Vector3(10, 12.22304F, -37));
 
@@ -37,7 +37,7 @@ public class SpawnAnimals : MonoBehaviour
     private void startRandom(GameObject o)
     {
         int randIndex = UnityEngine.Random.Range(0, spawnLocations.Count);
-        //randIndex = 5;
+        randIndex = 3;
         Vector3 randStartingPos = (Vector3)spawnLocations[randIndex];
         UnityEngine.Debug.Log(randIndex);
 
