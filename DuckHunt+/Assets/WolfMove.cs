@@ -29,8 +29,5 @@ public class WolfMove : MonoBehaviour
             Destroy(this.gameObject);
         }
         anim.SetBool("wolfRun", true);
-        Vector3 vel = rb.velocity;
-        float angle = Mathf.Atan(vel.x / vel.z);
-
     }
 }
