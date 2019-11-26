@@ -4,20 +4,22 @@ using UnityEngine;
 
 public class Duck : MonoBehaviour
 {
+    public const double perimRad = 120.0;
     private Vector3 max;
     public Transform target;
-    private GameObject cam;
+    private Vector3 camPos;
 
     // Start is called before the first frame update
     void Start()
     {
-        cam = GameObject.Find("[CameraRig]");
+        camPos = GameObject.Find("[CameraRig]").transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(transform.position, cam.transform.position) > 90)
+        // check if duck's x/z component distance is out of perimeter
+        if (Vector3.Distance(transform.position, new Vector3 (camPos.x, transform.position.y, camPos.z)) > perimRad + 1)
             Destroy(this.gameObject);
 
     }
