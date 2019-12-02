@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using System.Diagnostics;
+using System;
 
 public class WolfMove : MonoBehaviour
 {
@@ -11,46 +13,66 @@ public class WolfMove : MonoBehaviour
     public AudioClip growl;
     AudioSource audio;
     const float audioThreshold = 30F;
-    bool played = false;
-    float hitCount = 0;
-    float hitTheshold = 500;
-    // Start is called before the first frame update
+    const int damageRadius = 5;
+    const int damageDelta = 2;
+    bool howlPlayed = false;
+    Stopwatch stopWatch;
     void Start()
     {
 
         rb = this.GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
-
         goal = GameObject.Find("Player").transform;
         NavMeshAgent agent = GetComponent<NavMeshAgent>();
         agent.destination = goal.position;
         audio = GetComponent<AudioSource>();
+        stopWatch = new Stopwatch();
     }
 
     // Update is called once per frame
     void Update()
     {
         float dist = Vector3.Distance(transform.position, goal.transform.position);
+        TimeSpan ts = stopWatch.Elapsed;
+        
+        // if within distance of when growling should be heard 
         if (dist <= audioThreshold)
         {
-            if (!played)
+            // if initial how hasn't occurred, make it happ'n cap'n
+            if (!howlPlayed)
             {
                 audio.PlayOneShot(growl, .5F);
-                played = true;
+                howlPlayed = true;
             }
-            if (dist <= 5)
+            // if distance of wolf and camera is enough to cause damage
+            if (dist <= damageRadius)
             {
-                if (hitCount++ % hitTheshold == 0)
+                // if wolf stays within proximity of camera long enough, cause 
+                // damage and restart timer
+                if (!stopWatch.IsRunning)
+                {
+                    stopWatch.Restart();
+                }
+                else
+                if (ts.Seconds > damageDelta)
                 {
                     GameState.health--;
+                    stopWatch.Restart();
                 }
             }
+            else
+            {
+                stopWatch.Stop();
+            }
+
+            // audio is a function of distance from player 
             audio.volume = 1 - (dist / audioThreshold);
         }
         else
         {
+            stopWatch.Stop();
             audio.Stop();
-            played = false;
+            howlPlayed = false;
         }
 
         //if (dist <= 4)
