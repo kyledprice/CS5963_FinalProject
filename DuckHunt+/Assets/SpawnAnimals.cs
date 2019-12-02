@@ -7,14 +7,16 @@ using UnityEngine.AI;
 public class SpawnAnimals : MonoBehaviour
 {
     public GameObject animalPrefab;
-    public float respawnTime = 1.0F;
+    public float respawnTime = 20.0F;
 
-    public float speed = 10.0F;
+    public float speed = 12.0F;
     public float rotSpeed = 100.0F;
     static Animator anim;
     private Rigidbody rb;
     private ArrayList spawnLocations;
     public Transform goal;
+    AudioSource audio;
+    public AudioClip howl;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +29,7 @@ public class SpawnAnimals : MonoBehaviour
         spawnLocations.Add(new Vector3(10, 12.22304F, -37));
 
         rb = this.GetComponent<Rigidbody>();
+        audio = GetComponent<AudioSource>();
         StartCoroutine(animalWave());
     }
     public void spawnAnimal()
@@ -41,15 +44,9 @@ public class SpawnAnimals : MonoBehaviour
         Vector3 randStartingPos = (Vector3)spawnLocations[randIndex];
         UnityEngine.Debug.Log(randIndex);
 
-        //goal = GameObject.Find("[CameraRig]").transform;
-        //NavMeshAgent agent = o.GetComponent<NavMeshAgent>();
-        //agent.destination = goal.position;
-
         o.transform.position = randStartingPos;
+        audio.PlayOneShot(howl, .3F);
 
-        //goal = GameObject.Find("[CameraRig]").transform;
-        //NavMeshAgent agent = o.GetComponent<NavMeshAgent>();
-        //agent.destination = goal.position;
     }
     IEnumerator animalWave()
     {

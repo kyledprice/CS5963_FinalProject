@@ -12,7 +12,7 @@ public class Duck : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        camPos = GameObject.Find("[CameraRig]").transform.position;
+        camPos = GameObject.Find("Player").transform.position;
     }
 
     // Update is called once per frame
