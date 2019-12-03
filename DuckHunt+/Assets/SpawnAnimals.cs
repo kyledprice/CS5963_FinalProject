@@ -42,7 +42,7 @@ public class SpawnAnimals : MonoBehaviour
         int randIndex = UnityEngine.Random.Range(0, spawnLocations.Count);
         randIndex = 3;
         Vector3 randStartingPos = (Vector3)spawnLocations[randIndex];
-        UnityEngine.Debug.Log(randIndex);
+        //UnityEngine.Debug.Log(randIndex);
 
         o.transform.position = randStartingPos;
         audio.PlayOneShot(howl, .3F);

@@ -10,6 +10,14 @@ public class Duck : MonoBehaviour
     private Vector3 camPos;
 
     // Start is called before the first frame update
+    private void OnCollisionEnter(Collision collision)
+    {
+        //if (collision.collider.tag == "bullet_tag")
+            UnityEngine.Debug.Log("duck down");
+        //this.GetComponent<Rigidbody>().useGravity = true;
+        //this.GetComponent<Rigidbody>().velocity = new Vector3(10, 0, 0);
+    }
+
     void Start()
     {
         camPos = GameObject.Find("Player").transform.position;
@@ -23,4 +31,5 @@ public class Duck : MonoBehaviour
             Destroy(this.gameObject);
 
     }
+
 }

@@ -17,6 +17,14 @@ public class WolfMove : MonoBehaviour
     const int damageDelta = 2;
     bool howlPlayed = false;
     Stopwatch stopWatch;
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.tag == "bullet_tag") 
+            UnityEngine.Debug.Log("wolf down");
+        //this.GetComponent<Rigidbody>().useGravity = true;
+        //this.GetComponent<Rigidbody>().velocity = new Vector3(10, 0, 0);
+    }
     void Start()
     {
 

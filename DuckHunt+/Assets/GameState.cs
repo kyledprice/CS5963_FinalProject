@@ -17,7 +17,7 @@ public class GameState : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UnityEngine.Debug.Log(health);
+        //UnityEngine.Debug.Log(health);
         if (health <= 0)
         {
             restartGame();
