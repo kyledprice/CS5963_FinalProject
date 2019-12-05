@@ -400,7 +400,7 @@ PrefabInstance:
     - target: {fileID: 2527048623601021522, guid: d02cbbe1229567942bb83dd6c2a15f37,
         type: 3}
       propertyPath: m_Radius
-      value: 0.5
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 2527048623601021522, guid: d02cbbe1229567942bb83dd6c2a15f37,
         type: 3}
@@ -641,7 +641,7 @@ TerrainCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 853916759}
   m_Material: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_TerrainData: {fileID: 15600000, guid: 5225c1251c11ece4582f35f06b595afe, type: 2}
   m_EnableTreeColliders: 0
 --- !u!218 &853916762
@@ -818,8 +818,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 932309252}
-  m_LocalRotation: {x: 0.2619874, y: 0.26835018, z: 0.07499874, w: -0.92397296}
-  m_LocalPosition: {x: 49.254784, y: -2.2639713, z: 4.1407185}
+  m_LocalRotation: {x: 0.014030171, y: 0.9861517, z: 0.088788316, w: -0.13937257}
+  m_LocalPosition: {x: 62.73359, y: -0.53660965, z: -17.054653}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1120,7 +1120,7 @@ MonoBehaviour:
   firePoint: {fileID: 1091825749}
   projectilePrefab: {fileID: 3747088960703161095, guid: 8eddc2a475d420341933b8454f8aa9b5,
     type: 3}
-  launchForce: 5000
+  launchForce: 10000
   hand: {fileID: 737169392}
   myAction:
     actionPath: /actions/default/in/InteractUI
@@ -1148,6 +1148,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcec54932896dc546a97d95ba272eb1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1607882140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607882138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d21d2436ef5462e448c31b4fec037604, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trigger:
+    actionPath: /actions/default/in/InteractUI
+    needsReinit: 0
+  haptic:
+    actionPath: /actions/default/out/Haptic
+    needsReinit: 0
+  hand: 2
 --- !u!1 &1987628798
 GameObject:
   m_ObjectHideFlags: 0

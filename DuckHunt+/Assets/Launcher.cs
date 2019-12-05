@@ -54,10 +54,10 @@ public class Launcher : MonoBehaviour
     }
     public void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
-        {
-            LaunchProjectile();
-        }
+        //if (Input.GetButtonDown("Fire1"))
+        //{
+        //    LaunchProjectile();
+        //}
     }
 
     private void LaunchProjectile()

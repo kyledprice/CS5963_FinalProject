@@ -8,19 +8,22 @@ public class Duck : MonoBehaviour
     private Vector3 max;
     public Transform target;
     private Vector3 camPos;
+    public Animator anim;
 
     // Start is called before the first frame update
-    private void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider other)
     {
         //if (collision.collider.tag == "bullet_tag")
-            UnityEngine.Debug.Log("duck down");
-        //this.GetComponent<Rigidbody>().useGravity = true;
-        //this.GetComponent<Rigidbody>().velocity = new Vector3(10, 0, 0);
+        UnityEngine.Debug.Log("duck down");
+        this.GetComponent<Rigidbody>().useGravity = true;
+        anim.SetBool("duck_die", true);
+        //this.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
     }
 
     void Start()
     {
         camPos = GameObject.Find("Player").transform.position;
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame

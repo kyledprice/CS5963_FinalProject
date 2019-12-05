@@ -18,9 +18,9 @@ public class WolfMove : MonoBehaviour
     bool howlPlayed = false;
     Stopwatch stopWatch;
 
-    private void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider other)
     {
-        if (collision.collider.tag == "bullet_tag") 
+        //if (collision.collider.tag == "bullet_tag") 
             UnityEngine.Debug.Log("wolf down");
         //this.GetComponent<Rigidbody>().useGravity = true;
         //this.GetComponent<Rigidbody>().velocity = new Vector3(10, 0, 0);
