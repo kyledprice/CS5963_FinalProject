@@ -22,7 +22,12 @@ public class Launcher : MonoBehaviour
     public Vector3 velocity;
     public float gravityMultiplier = 1f;
     public LayerMask hitMask = -1; // all layers by default
+    public AudioSource shoot;
 
+    void Start()
+    {
+        shoot = GetComponent<AudioSource>();
+    }
     private void OnEnable()
     {
         if (hand == null)
@@ -50,6 +55,7 @@ public class Launcher : MonoBehaviour
         {
             //Instantiate(Projectile, hand.transform.position, hand.transform.rotation);
             LaunchProjectile();
+            shoot.Play();
         }
     }
     public void Update()
