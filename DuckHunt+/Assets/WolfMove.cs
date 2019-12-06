@@ -24,20 +24,15 @@ public class WolfMove : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        //if (collision.collider.tag == "bullet_tag") 
-        //UnityEngine.Debug.Log("wolf down");
         if(!beenShot)
         {   
             this.GetComponent<Rigidbody>().useGravity = beenShot = true;
             anim.SetBool("wolfDie", true);
             wolfHitAudio.PlayOneShot(wolfDieSound, .5F);
-            //UnityEngine.Debug.Log(anim.GetBool("wolfDie"));
             agent.enabled = false;
-
+            Invoke("destroy", 4.0f);
+            GameState.score += 5; 
         }
-
-        //this.GetComponent<Rigidbody>().useGravity = true;
-        //this.GetComponent<Rigidbody>().velocity = new Vector3(10, 0, 0);
     }
     void Start()
     {
@@ -47,8 +42,8 @@ public class WolfMove : MonoBehaviour
         goal = GameObject.Find("Player").transform;
         NavMeshAgent agent = GetComponent<NavMeshAgent>();
         agent.destination = goal.position;
-        //audio = GetComponent<AudioSource>();
         stopWatch = new Stopwatch();
+        
     }
 
     // Update is called once per frame
@@ -96,11 +91,10 @@ public class WolfMove : MonoBehaviour
             wolfAudio.Stop();
             howlPlayed = false;
         }
+    }
 
-        //if (dist <= 4)
-        //{
-        //    Destroy(this.gameObject);
-        //}
-        //anim.SetBool("wolfRun", true);
+    void destroy()
+    {
+        Destroy(this.gameObject);
     }
 }

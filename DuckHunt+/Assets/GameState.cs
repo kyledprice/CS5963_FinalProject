@@ -8,6 +8,8 @@ public class GameState : MonoBehaviour
     public const float fullHealth = 10;
     public static float health = fullHealth;
     public static int score = 0;
+    public AudioSource deathAudioSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +19,7 @@ public class GameState : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //UnityEngine.Debug.Log(health);
+        UnityEngine.Debug.Log(score);
         if (health <= 0)
         {
             restartGame();
@@ -27,6 +29,7 @@ public class GameState : MonoBehaviour
     {
         health = fullHealth;
         score = 0;
+        deathAudioSource.PlayOneShot(deathAudioSource.clip);
 
         // wolves and ducks included with animal_tag
         GameObject[] animals = GameObject.FindGameObjectsWithTag("animal_tag");

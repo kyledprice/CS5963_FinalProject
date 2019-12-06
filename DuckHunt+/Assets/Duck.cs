@@ -20,8 +20,8 @@ public class Duck : MonoBehaviour
             this.GetComponent<Rigidbody>().useGravity = beenShot = true;
             anim.SetBool("duck_die", true);
             duckFall.Play();
+            GameState.score += 1;
         }
-        //this.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
     }
 
     void Start()
