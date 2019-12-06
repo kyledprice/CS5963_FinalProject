@@ -10,16 +10,17 @@ public class Duck : MonoBehaviour
     private Vector3 camPos;
     public Animator anim;
     public AudioSource duckFall;
+    private bool beenShot = false;
 
     // Start is called before the first frame update
     void OnTriggerEnter(Collider other)
     {
-        UnityEngine.Debug.Log(other.name);
-        //if (collision.collider.tag == "bullet_tag")
-        UnityEngine.Debug.Log("duck down");
-        this.GetComponent<Rigidbody>().useGravity = true;
-        anim.SetBool("duck_die", true);
-        duckFall.Play();
+        if (!beenShot)
+        {
+            this.GetComponent<Rigidbody>().useGravity = beenShot = true;
+            anim.SetBool("duck_die", true);
+            duckFall.Play();
+        }
         //this.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
     }
 

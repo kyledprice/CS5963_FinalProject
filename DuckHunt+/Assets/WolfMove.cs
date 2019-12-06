@@ -11,17 +11,31 @@ public class WolfMove : MonoBehaviour
     private Rigidbody rb;
     public Transform goal;
     public AudioClip growl;
-    AudioSource audio;
+    public AudioClip wolfDieSound;
+    public AudioSource wolfAudio;
+    public AudioSource wolfHitAudio;
     const float audioThreshold = 30F;
     const int damageRadius = 5;
     const int damageDelta = 2;
     bool howlPlayed = false;
     Stopwatch stopWatch;
+    public NavMeshAgent agent;
+    private bool beenShot;
 
     void OnTriggerEnter(Collider other)
     {
         //if (collision.collider.tag == "bullet_tag") 
-            UnityEngine.Debug.Log("wolf down");
+        //UnityEngine.Debug.Log("wolf down");
+        if(!beenShot)
+        {   
+            this.GetComponent<Rigidbody>().useGravity = beenShot = true;
+            anim.SetBool("wolfDie", true);
+            wolfHitAudio.PlayOneShot(wolfDieSound, .5F);
+            //UnityEngine.Debug.Log(anim.GetBool("wolfDie"));
+            agent.enabled = false;
+
+        }
+
         //this.GetComponent<Rigidbody>().useGravity = true;
         //this.GetComponent<Rigidbody>().velocity = new Vector3(10, 0, 0);
     }
@@ -33,7 +47,7 @@ public class WolfMove : MonoBehaviour
         goal = GameObject.Find("Player").transform;
         NavMeshAgent agent = GetComponent<NavMeshAgent>();
         agent.destination = goal.position;
-        audio = GetComponent<AudioSource>();
+        //audio = GetComponent<AudioSource>();
         stopWatch = new Stopwatch();
     }
 
@@ -44,12 +58,12 @@ public class WolfMove : MonoBehaviour
         TimeSpan ts = stopWatch.Elapsed;
         
         // if within distance of when growling should be heard 
-        if (dist <= audioThreshold)
+        if (dist <= audioThreshold && !beenShot)
         {
             // if initial how hasn't occurred, make it happ'n cap'n
             if (!howlPlayed)
             {
-                audio.PlayOneShot(growl, .5F);
+                wolfAudio.PlayOneShot(growl, .5F);
                 howlPlayed = true;
             }
             // if distance of wolf and camera is enough to cause damage
@@ -74,12 +88,12 @@ public class WolfMove : MonoBehaviour
             }
 
             // audio is a function of distance from player 
-            audio.volume = 1 - (dist / audioThreshold);
+            wolfAudio.volume = 1 - (dist / audioThreshold);
         }
         else
         {
             stopWatch.Stop();
-            audio.Stop();
+            wolfAudio.Stop();
             howlPlayed = false;
         }
 
@@ -87,6 +101,6 @@ public class WolfMove : MonoBehaviour
         //{
         //    Destroy(this.gameObject);
         //}
-        anim.SetBool("wolfRun", true);
+        //anim.SetBool("wolfRun", true);
     }
 }
