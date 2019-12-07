@@ -21,12 +21,12 @@ public class SpawnAnimals : MonoBehaviour
     void Start()
     {
         spawnLocations = new ArrayList();
-        spawnLocations.Add(new Vector3(-128, 12.22304F, 81));
-        spawnLocations.Add(new Vector3(-128, 12.22304F, -39));
-        spawnLocations.Add(new Vector3(10, 12.22304F, -107));
-        //spawnLocations.Add(new Vector3(2, 12.22304F, 92));
-        spawnLocations.Add(new Vector3(41, 12.22304F, -98));
-        spawnLocations.Add(new Vector3(10, 12.22304F, -37));
+        spawnLocations.Add(new Vector3(-108, 12.22304F, 81));
+        spawnLocations.Add(new Vector3(-78, 12.22304F, 1.8F));
+        spawnLocations.Add(new Vector3(.22F, 12.22304F, -104));
+        //spawnLocations.Add(new Vector3(32, 12.22304F, 27));
+        spawnLocations.Add(new Vector3(44, 15.53F, -112));
+        spawnLocations.Add(new Vector3(-115, 12.22304F, 116));
 
         rb = this.GetComponent<Rigidbody>();
         audio = GetComponent<AudioSource>();
@@ -40,9 +40,8 @@ public class SpawnAnimals : MonoBehaviour
     private void startRandom(GameObject o)
     {
         int randIndex = UnityEngine.Random.Range(0, spawnLocations.Count);
-        randIndex = 3;
+        //randIndex = 3;
         Vector3 randStartingPos = (Vector3)spawnLocations[randIndex];
-        //UnityEngine.Debug.Log(randIndex);
 
         o.transform.position = randStartingPos;
         audio.PlayOneShot(howl, .3F);
