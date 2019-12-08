@@ -36,7 +36,8 @@ public class GameState : MonoBehaviour
     {
         health = fullHealth;
         score = 0;
-        //deathAudioSource.PlayOneShot(deathAudioSource.clip);
+        AudioSource dieSound = GameObject.Find("Player").GetComponent<AudioSource>();
+        dieSound.PlayOneShot(dieSound.clip);
 
         // wolves and ducks included with animal_tag
         GameObject[] animals = GameObject.FindGameObjectsWithTag("animal_tag");
