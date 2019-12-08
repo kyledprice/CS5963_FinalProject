@@ -9,7 +9,7 @@ public class GameState : MonoBehaviour
     public const float fullHealth = 10;
     public static float health = fullHealth;
     public static int score = 0;
-    public AudioSource deathAudioSource;
+    public static AudioSource deathAudioSource;
     private TextMeshProUGUI textMesh;
     public TextMeshPro healthText;
 
@@ -31,11 +31,12 @@ public class GameState : MonoBehaviour
             restartGame();
         }   
     }
-    void restartGame()
+
+    public static void restartGame()
     {
         health = fullHealth;
         score = 0;
-        deathAudioSource.PlayOneShot(deathAudioSource.clip);
+        //deathAudioSource.PlayOneShot(deathAudioSource.clip);
 
         // wolves and ducks included with animal_tag
         GameObject[] animals = GameObject.FindGameObjectsWithTag("animal_tag");
