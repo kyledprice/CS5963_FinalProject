@@ -27,7 +27,6 @@ public class WolfMove : MonoBehaviour
         if(!beenShot)
         {   
             this.GetComponent<Rigidbody>().useGravity = beenShot = true;
-            //anim.SetBool("wolfDie", true);
             wolfHitAudio.PlayOneShot(wolfDieSound, .5F);
             agent.enabled = false;
             Invoke("destroy", 4.0f);

@@ -16,10 +16,6 @@ public class GameState : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ////textMesh = GetComponent<TextMeshProUGUI>();
-        ////healthText = GetComponent<TextMeshPro>();
-        //healthText = GameObject.Find("HealthButton").GetComponent<TextMeshPro>();
-        //healthText.SetText("go fuck yourself");
     }
 
     // Update is called once per frame
