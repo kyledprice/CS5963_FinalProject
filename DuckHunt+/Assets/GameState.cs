@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameState : MonoBehaviour
 {
@@ -9,17 +10,22 @@ public class GameState : MonoBehaviour
     public static float health = fullHealth;
     public static int score = 0;
     public AudioSource deathAudioSource;
+    private TextMeshProUGUI textMesh;
+    public TextMeshPro healthText;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        ////textMesh = GetComponent<TextMeshProUGUI>();
+        ////healthText = GetComponent<TextMeshPro>();
+        //healthText = GameObject.Find("HealthButton").GetComponent<TextMeshPro>();
+        //healthText.SetText("go fuck yourself");
     }
 
     // Update is called once per frame
     void Update()
     {
-        UnityEngine.Debug.Log(score);
+        
         if (health <= 0)
         {
             restartGame();
