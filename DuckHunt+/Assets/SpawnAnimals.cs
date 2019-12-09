@@ -20,11 +20,11 @@ public class SpawnAnimals : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // wolf spawning positions
         spawnLocations = new ArrayList();
         spawnLocations.Add(new Vector3(-108, 12.22304F, 81));
         spawnLocations.Add(new Vector3(-78, 12.22304F, 1.8F));
         spawnLocations.Add(new Vector3(.22F, 12.22304F, -104));
-        //spawnLocations.Add(new Vector3(32, 12.22304F, 27));
         spawnLocations.Add(new Vector3(44, 15.53F, -112));
         spawnLocations.Add(new Vector3(-115, 12.22304F, 116));
 
@@ -40,7 +40,6 @@ public class SpawnAnimals : MonoBehaviour
     private void startRandom(GameObject o)
     {
         int randIndex = UnityEngine.Random.Range(0, spawnLocations.Count);
-        //randIndex = 3;
         Vector3 randStartingPos = (Vector3)spawnLocations[randIndex];
 
         o.transform.position = randStartingPos;
@@ -51,7 +50,6 @@ public class SpawnAnimals : MonoBehaviour
     {
         while (true)
         {
-            //UnityEngine.Debug.Log("what the fuck");
             yield return new WaitForSeconds(respawnTime);
             spawnAnimal();
         }

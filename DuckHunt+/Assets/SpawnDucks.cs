@@ -25,6 +25,8 @@ public class SpawnDucks : MonoBehaviour
     }
     private void startRandom(GameObject o)
     {
+        // spawns ducks on outer edge of a constant perimenter at random spot 
+        // and gives them a random trajectory toward the center of the circle
         double posAngle = toRad((double)UnityEngine.Random.Range(0, 360));
         float randHeight = UnityEngine.Random.Range(20, 60);
         o.transform.position = new Vector3((float)(Duck.perimRad * Math.Cos(posAngle)), randHeight, (float)(Duck.perimRad * Math.Sin(posAngle)));

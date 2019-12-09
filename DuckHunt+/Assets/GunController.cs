@@ -18,32 +18,11 @@ public class GunController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // vibrate when right trigger pulled
         if (trigger.GetStateDown(hand))
         {
             muzzleBlast.Play();
             haptic.Execute(0, 1000, 10, 1, hand);
         }
     }
-
-    //private void OnEnable()
-    //{
-    //    if (hand == null)
-    //        hand = this.GetComponent<Hand>();
-
-    //    if (myAction == null)
-    //    {
-    //        return;
-    //    }
-    //    myAction.AddOnChangeListener(OnMyActionChange, hand.handType);
-    //}
-
-    //private void OnDisable()
-    //{
-    //    if (myAction != null)
-    //        myAction.RemoveOnChangeListener(OnMyActionChange, hand.handType);
-    //}
-//    private void OnMyActionChange(SteamVR_Action_Boolean actionIn, SteamVR_Input_Sources input_Sources, bool newValue)
-//    {
-//        haptic.Execute(0, 1000, 10, 1, hand);
-//    }
 }

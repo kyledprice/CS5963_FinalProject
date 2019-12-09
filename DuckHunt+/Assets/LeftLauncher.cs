@@ -52,17 +52,11 @@ public class LeftLauncher : MonoBehaviour
             {
                 UnityEngine.Debug.Log("b");
                 Application.Quit();
-            }
-            //Instantiate(Projectile, hand.transform.position, hand.transform.rotation);
-  
+            }  
         }
     }
     public void Update()
     {
-        //if (Input.GetButtonDown("Fire1"))
-        //{
-        //    LaunchProjectile();
-        //}
     }
 
 }

@@ -53,17 +53,12 @@ public class Launcher : MonoBehaviour
     {
         if (newValue)
         {
-            //Instantiate(Projectile, hand.transform.position, hand.transform.rotation);
             LaunchProjectile();
             shoot.Play();
         }
     }
     public void Update()
     {
-        //if (Input.GetButtonDown("Fire1"))
-        //{
-        //    LaunchProjectile();
-        //}
     }
 
     private void LaunchProjectile()

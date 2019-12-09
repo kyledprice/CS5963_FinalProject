@@ -16,7 +16,5 @@ public class Bullet : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, new Vector3(camPos.x, transform.position.y, camPos.z)) > Duck.perimRad + 1)
             Destroy(this.gameObject);
-
-
     }
 }
